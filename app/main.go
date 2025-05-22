@@ -104,7 +104,7 @@ func parseRequest(r io.Reader) (request, error) {
 
 	split := strings.Split(buf.String(), "\r\n")
 	if len(split) < 4 {
-		return request{}, fmt.Errorf("invalid request, should consist of 3 segments. found &d", len(split))
+		return request{}, fmt.Errorf("invalid request, should consist of 3 segments. found %d", len(split))
 	}
 	requestLine := split[0]
 

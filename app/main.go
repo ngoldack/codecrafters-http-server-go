@@ -26,13 +26,15 @@ func main() {
 	}
 	defer conn.Close()
 
-	status, err := getStatus(200)
+	resp, err := getStatus(200)
 	if err != nil {
 		fmt.Println("error creating status", err)
 		os.Exit(1)
 	}
 
-	_, err = conn.Write([]byte(status))
+	resp += "\r\n" // body
+
+	_, err = conn.Write([]byte(resp))
 	if err != nil {
 		fmt.Println("error writing status")
 	}
